@@ -33,7 +33,7 @@ router.post("/simulation/create", async (req, res) => {
     await newSimulation.save();
 
     //seul le numéro de dossier doit être retourné au Front (dernier écran)
-    return res.json(numeroDossier);
+    return res.json(fileNumber);
   } catch (error) {
     console.log(error.message);
     res.json({ message: error.message });
