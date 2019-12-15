@@ -1,16 +1,17 @@
 const mongoose = require("mongoose");
 
 const Simulation = mongoose.model("Simulation", {
-  typeDeBien: String,
-  etatDuBien: String,
-  usageDuBien: String,
-  votreSituationActuelle: String,
-  paysDuBien: String,
-  villeDuBien: String,
-  montantEstimeProjet: Number,
-  emailEmprunteur: {
+  fileNumber: String,
+  propertyType: String,
+  propertyCondition: String,
+  propertyUse: String,
+  borrowerCurrentSituation: String,
+  propertyCountry: String,
+  propertyCity: String,
+  projectEstimatedAmount: Number,
+  borrowerEmail: {
     type: String,
-    trim: true,
+    trim: true, //élimine les espaces avant et après l'email.
     lowercase: true,
     minlength: 6,
     maxlength: 254

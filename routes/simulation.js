@@ -7,27 +7,33 @@ const Simulation = require("../models/Simulation");
 //Route 1 - CREATE *************************************************** :
 router.post("/simulation/create", async (req, res) => {
   try {
-    let typeDeBien = req.fields.typeDeBien;
-    let etatDuBien = req.fields.etatDuBien;
-    let usageDuBien = req.fields.usageDuBien;
-    let votreSituationActuelle = req.fields.votreSituationActuelle;
-    let paysDuBien = req.fields.paysDuBien;
-    let villeDuBien = req.fields.villeDuBien;
-    let montantEstimeProjet = req.fields.montantEstimeProjet; //pour le moment en dur mais sera ensuite un calcul
-    let emailEmprunteur = req.fields.emailEmprunteur;
+    let propertyType = req.fields.propertyType;
+    let propertyCondition = req.fields.propertyCondition;
+    let propertyUse = req.fields.propertyUse;
+    let borrowerCurrentSituation = req.fields.borrowerCurrentSituation;
+    let propertyCountry = req.fields.propertyCountry;
+    let propertyCity = req.fields.propertyCity;
+    let projectEstimatedAmount = req.fields.projectEstimatedAmount; //pour le moment en dur mais sera ensuite un calcul
+    let borrowerEmail = req.fields.borrowerEmail;
+
+    //générer un numéro de dossier automatique
+    let fileNumber = "123456";
 
     const newSimulation = new Simulation({
-      typeDeBien: typeDeBien,
-      etatDuBien: etatDuBien,
-      usageDuBien: usageDuBien,
-      votreSituationActuelle: votreSituationActuelle,
-      paysDuBien: paysDuBien,
-      villeDuBien: villeDuBien,
-      montantEstimeProjet: montantEstimeProjet,
-      emailEmprunteur: emailEmprunteur
+      propertyType: propertyType,
+      propertyCondition: propertyCondition,
+      propertyUse: propertyUse,
+      borrowerCurrentSituation: borrowerCurrentSituation,
+      propertyCountry: propertyCountry,
+      propertyCity: propertyCity,
+      projectEstimatedAmount: projectEstimatedAmount,
+      borrowerEmail: borrowerEmail,
+      fileNumber: fileNumber
     });
     await newSimulation.save();
-    return res.json(newSimulation);
+
+    //seul le numéro de dossier doit être retourné au Front (dernier écran)
+    return res.json(numeroDossier);
   } catch (error) {
     console.log(error.message);
     res.json({ message: error.message });
