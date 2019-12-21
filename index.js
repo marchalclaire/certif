@@ -15,6 +15,9 @@ require("./models/Simulation");
 const simulationRoutes = require("./routes/simulation");
 app.use(simulationRoutes);
 
+const backOfficeRoutes = require("./routes/backOffice");
+app.use(backOfficeRoutes);
+
 // on se connecte à la base de données : *******************************
 mongoose.connect("mongodb://localhost/certif", {
   useNewUrlParser: true,
