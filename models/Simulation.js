@@ -9,13 +9,10 @@ const Simulation = mongoose.model("Simulation", {
   propertyCountry: String,
   propertyCity: String,
   projectEstimatedAmount: Number,
-  borrowerEmail: {
-    type: String,
-    trim: true, //élimine les espaces avant et après l'email.
-    lowercase: true,
-    minlength: 6,
-    maxlength: 254
-  }
+  repairsEstimatedAmount: Number,
+  notaryCosts: Number,
+  totalAmount: Number,
+  borrowerEmail: String
 });
 
 module.exports = Simulation;

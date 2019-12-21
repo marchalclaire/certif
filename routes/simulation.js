@@ -13,11 +13,14 @@ router.post("/simulation/create", async (req, res) => {
     let borrowerCurrentSituation = req.fields.borrowerCurrentSituation;
     let propertyCountry = req.fields.propertyCountry;
     let propertyCity = req.fields.propertyCity;
-    let projectEstimatedAmount = req.fields.projectEstimatedAmount; //pour le moment en dur mais sera ensuite un calcul
+    let projectEstimatedAmount = req.fields.projectEstimatedAmount;
+    let repairsEstimatedAmount = req.fields.repairsEstimatedAmount;
+    let notaryCosts = req.fields.notaryCosts;
+    let totalAmount = req.fields.totalAmount;
     let borrowerEmail = req.fields.borrowerEmail;
 
     //générer un numéro de dossier automatique
-    let fileNumber = "123456";
+    let fileNumber = Math.floor(Math.random() * 100000000);
 
     const newSimulation = new Simulation({
       propertyType: propertyType,
@@ -27,6 +30,9 @@ router.post("/simulation/create", async (req, res) => {
       propertyCountry: propertyCountry,
       propertyCity: propertyCity,
       projectEstimatedAmount: projectEstimatedAmount,
+      repairsEstimatedAmount: repairsEstimatedAmount,
+      notaryCosts: notaryCosts,
+      totalAmount: totalAmount,
       borrowerEmail: borrowerEmail,
       fileNumber: fileNumber
     });
