@@ -23,8 +23,6 @@ router.post("/backoffice/login", async (req, res) => {
   }
 });
 
-//   dans postman : http://localhost:4001/backoffice/login
-
 //Route 2 - DONNEES *************************************************** :
 router.get("/backoffice/data", async (req, res) => {
   try {
@@ -37,8 +35,6 @@ router.get("/backoffice/data", async (req, res) => {
     return res.json({ message: error.message });
   }
 });
-
-//   dans postman : http://localhost:4001/backoffice/data
 
 //Route 3 - DELETE *************************************************** :
 router.post("/backoffice/delete", async (req, res) => {
@@ -58,7 +54,5 @@ router.post("/backoffice/delete", async (req, res) => {
     return res.json({ message: error.message });
   }
 });
-
-//   dans postman : http://localhost:4001/backoffice/delete
 
 module.exports = router;

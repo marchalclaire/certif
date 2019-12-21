@@ -39,6 +39,7 @@ router.post("/simulation/create", async (req, res) => {
     });
     await newSimulation.save();
 
+    //gestion de l'envoi du mail
     const API_KEY = "key-0e0307189be7ed0249cbb73e7909f8cf";
     const DOMAIN = "mg.lereacteur.io";
     const mg = mailgun({ apiKey: API_KEY, domain: DOMAIN });
@@ -89,7 +90,5 @@ router.post("/simulation/create", async (req, res) => {
     res.json({ message: error.message });
   }
 });
-
-//   dans postman : http://localhost:4001/simulation/create
 
 module.exports = router;

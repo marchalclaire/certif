@@ -28,5 +28,3 @@ mongoose.connect("mongodb://localhost/certif", {
 app.listen(4001, () => {
   console.log("Server Started");
 });
-
-// demarrer avec npx nodemon index.js (on obient dans Terminal => Server Started)
