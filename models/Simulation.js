@@ -8,11 +8,15 @@ const Simulation = mongoose.model("Simulation", {
   borrowerCurrentSituation: String,
   propertyCountry: String,
   propertyCity: String,
-  projectEstimatedAmount: Number,
+  propertyEstimatedAmount: Number,
   repairsEstimatedAmount: Number,
   notaryCosts: Number,
   totalAmount: Number,
-  borrowerEmail: String
+  borrowerEmail: {
+    type: String,
+    trim: true,
+    lowercase: true
+  }
 });
 
 module.exports = Simulation;

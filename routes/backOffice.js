@@ -25,4 +25,40 @@ router.post("/backoffice/login", async (req, res) => {
 
 //   dans postman : http://localhost:4001/backoffice/login
 
+//Route 2 - DONNEES *************************************************** :
+router.get("/backoffice/data", async (req, res) => {
+  try {
+    //récupération de toutes les simulations déjà existantes
+    const simulations = await Simulation.find();
+
+    return res.json(simulations);
+  } catch (error) {
+    console.log(error.message);
+    return res.json({ message: error.message });
+  }
+});
+
+//   dans postman : http://localhost:4001/backoffice/data
+
+//Route 3 - DELETE *************************************************** :
+router.post("/backoffice/delete", async (req, res) => {
+  try {
+    let id = req.fields.id;
+
+    let simulationToDelete = await Simulation.findById(id);
+
+    if (simulationToDelete) {
+      // suppression de la simulation
+      simulationToDelete.remove();
+    }
+
+    return res.json("ok");
+  } catch (error) {
+    console.log(error.message);
+    return res.json({ message: error.message });
+  }
+});
+
+//   dans postman : http://localhost:4001/backoffice/delete
+
 module.exports = router;
